@@ -8,20 +8,27 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkgFile: 'package.json',
+        clean: ['build'],
         babel: {
             options: {
                 sourceMap: false
             },
             dist: {
                 files: {
-                    "build/index.js": "lib/adapter.js"
+                    'build/index.js': 'lib/adapter.js'
                 }
             }
         },
         eslint: {
-            target: files
+            options: {
+                parser: 'babel-eslint'
+            },
+            target: ['lib/adapter.js']
         },
         jshint: {
+            options: {
+                jshintrc: true
+            },
             src: files
         },
         contributors: {
@@ -38,12 +45,12 @@ module.exports = function(grunt) {
     });
 
     require('load-grunt-tasks')(grunt);
-    grunt.loadTasks('tasks');
-    grunt.registerTask('default', ['build', 'eslint', 'test']);
+    grunt.registerTask('default', ['build']);
     grunt.registerTask('build', 'Build wdio-mocha', function() {
         grunt.task.run([
             'jshint',
             'eslint',
+            'clean',
             'babel'
         ]);
     });

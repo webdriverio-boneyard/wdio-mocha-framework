@@ -8,6 +8,7 @@
   "indent": 4,
   "maxerr": 50,
   "esnext": true,
+  "asi": true,
   "quotmark": "single",
   "experimental": ["asyncawait"]
 }

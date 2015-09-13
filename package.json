@@ -1,0 +1,35 @@
+{
+  "name": "wdio-mocha",
+  "version": "0.0.0",
+  "description": "A WebdriverIO plugin. Adapter for Mocha testing framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webdriverio/wdio-mocha.git"
+  },
+  "keywords": [
+    "mocha",
+    "webdriverio",
+    "wdio",
+    "wdio-plugin",
+    "wdio-framework"
+  ],
+  "author": "Christian Bromann <christian@saucelabs.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webdriverio/wdio-mocha/issues"
+  },
+  "homepage": "https://github.com/webdriverio/wdio-mocha#readme",
+  "dependencies": {
+    "mocha": "^2.3.2"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-babel": "^5.0.1",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-eslint": "^17.1.0"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "wdio-mocha",
+  "name": "wdio-mocha-framework",
   "version": "0.0.0",
   "description": "A WebdriverIO plugin. Adapter for Mocha testing framework.",
   "main": "build/adapter.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/webdriverio/wdio-mocha.git"
+    "url": "git+https://github.com/webdriverio/wdio-mocha-framework.git"
   },
   "keywords": [
     "mocha",
@@ -20,9 +20,9 @@
   "author": "Christian Bromann <christian@saucelabs.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/webdriverio/wdio-mocha/issues"
+    "url": "https://github.com/webdriverio/wdio-mocha-framework/issues"
   },
-  "homepage": "https://github.com/webdriverio/wdio-mocha#readme",
+  "homepage": "https://github.com/webdriverio/wdio-mocha-framework#readme",
   "dependencies": {
     "mocha": "^2.3.2"
   },

@@ -39,6 +39,12 @@ module.exports = function(grunt) {
                 commitMessage: 'v%VERSION%',
                 pushTo: 'upstream'
             }
+        },
+        watch: {
+            dist: {
+                files: './lib/**/*.js',
+                tasks: ['babel:dist']
+            }
         }
     });
 

@@ -11,7 +11,8 @@ module.exports = function(grunt) {
         clean: ['build'],
         babel: {
             options: {
-                sourceMap: false
+                sourceMap: false,
+                optional: ['runtime']
             },
             dist: {
                 files: [{

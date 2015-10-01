@@ -57,7 +57,7 @@ module.exports = function (grunt) {
     })
 
     require('load-grunt-tasks')(grunt)
-    grunt.registerTask('default', ['eslint', 'mochaTest', 'build'])
+    grunt.registerTask('default', ['eslint', 'mochaTest'])
     grunt.registerTask('build', 'Build wdio-mocha', function () {
         grunt.task.run([
             'default',

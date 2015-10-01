@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/webdriverio/wdio-mocha-framework#readme",
   "dependencies": {
-    "mocha": "^2.3.2"
+    "mocha": "^2.3.2",
+    "wdio-sync": "0.0.1"
   },
   "devDependencies": {
     "babel": "^5.8.23",
@@ -41,7 +42,6 @@
     "grunt-eslint": "^17.1.0",
     "grunt-npm": "0.0.2",
     "load-grunt-tasks": "^3.2.0",
-    "mocha": "^2.3.3",
     "should": "^7.1.0",
     "sinon": "^1.17.1"
   }

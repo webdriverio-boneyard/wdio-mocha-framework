@@ -4,7 +4,7 @@
   "description": "A WebdriverIO plugin. Adapter for Mocha testing framework.",
   "main": "build/adapter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/grunt"
   },
   "repository": {
     "type": "git",

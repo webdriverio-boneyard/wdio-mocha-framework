@@ -2,5 +2,11 @@
   "extends": "standard",
   "rules": {
     "indent": [2, 4]
+  },
+  "globals": {
+    "describe": true,
+    "before": true,
+    "after": true,
+    "it": true
   }
 }

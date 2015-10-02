@@ -1,4 +1,15 @@
 language: node_js
 
 node_js:
-  - '0.11'
+- '0.11'
+
+script:
+  - ./node_modules/.bin/grunt
+
+after_success:
+  - sed 's/wdio-jasmine-framework\/lib/wdio-jasmine-framework\/build/g' coverage/lcov.info > coverage/lcov.info
+  - ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info
+
+env:
+  global:
+    secure: aAHLMOD5OoK71QJhJ1F77M4Sevg4VmUxZWr5mzYhPrzw2+KXbucLEJYoqlZeP1Oxah37ipyyQIu4hlDx180iLsz7sfctc4d1s5BOEnga8DFsJK0b0vyqVGI+N4uONym9xlYZAPxpDDK1WDyDAPmgcB12sWtWyOBLRoqeOlhFh9DgQpmkZZJ07BOvVoCGY6tP1ImJ4JzEyR2gSPsREGErpCsNzfxtENWn3lQ8dZjDSCTdNIqOYPX0ryTTCybY+IFNLzT+ypbbtbh3mlwMdFki8X9AN2ccv81/RSWEp/G5lg7bcxuEzCJtfxqdfpgPCntEJ8baOWVpTGPeor/IFtekW2Hs1yxR3Q2m4XYnGYKyUmOxzXfp76JgO12r+EoCEIJMq5TSinu6EbgiroLWU9TN94/9sxVTFIzYp0Efeg8Wf2ZJ+9Nvie4cXG245oFz/7FrdnSGYeK8LSiW5a8RQ5AJgzFTTB57ymDArlmiU+tCX+TPuY9slvcr7RJhlbAVj3KRBC0zkHhqQwS76zzmyQW0UNjzH09Z624m8ngYaS7ZvfxsOyle0ld8whepXfrUOY2828mB1rBoH/at8He4j3hN3cw2w2dVIKreGS5mkf4Ggc+0g41SkEuFr6Wz9yfQu1vW9Mu54CCvP2U6OWomVwfiE0zQSkJ0RqVqWFYKAljM68k=

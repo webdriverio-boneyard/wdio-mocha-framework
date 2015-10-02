@@ -67,10 +67,6 @@ describe('mocha adapter', () => {
             wrapCommand.called.should.be.true()
             runHook.called.should.be.true()
         })
-
-        it('should disable standard reporter', () => {
-            reporter.lastCall.args[0].toString().should.be.exactly('function DONOTHING() {}')
-        })
     })
 
     after(() => {

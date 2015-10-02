@@ -17,18 +17,16 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        mochaTest: {
-            test: {
+        mocha_istanbul: {
+            coverage: {
+                src: ['test/*.js'],
                 options: {
                     reporter: 'spec',
                     require: [
                         'should',
-                        function () {
-                            require('babel/register')({ plugins: ['rewire'] })
-                        }
+                        './test/bootstrap'
                     ]
-                },
-                src: ['test/*.js']
+                }
             }
         },
         eslint: {
@@ -57,10 +55,9 @@ module.exports = function (grunt) {
     })
 
     require('load-grunt-tasks')(grunt)
-    grunt.registerTask('default', ['eslint', 'mochaTest'])
-    grunt.registerTask('build', 'Build wdio-mocha', function () {
+    grunt.registerTask('default', ['eslint', 'build', 'mocha_istanbul'])
+    grunt.registerTask('build', 'Build wdio-mocha-framework', function () {
         grunt.task.run([
-            'default',
             'clean',
             'babel'
         ])

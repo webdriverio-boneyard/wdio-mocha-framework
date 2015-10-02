@@ -1,15 +1,14 @@
 language: node_js
 
 node_js:
-- '0.11'
+  - '0.11'
 
 script:
   - ./node_modules/.bin/grunt
 
 after_success:
-  - sed 's/wdio-jasmine-framework\/lib/wdio-jasmine-framework\/build/g' coverage/lcov.info > coverage/lcov.info
   - ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info
 
 env:
   global:
-    secure: aAHLMOD5OoK71QJhJ1F77M4Sevg4VmUxZWr5mzYhPrzw2+KXbucLEJYoqlZeP1Oxah37ipyyQIu4hlDx180iLsz7sfctc4d1s5BOEnga8DFsJK0b0vyqVGI+N4uONym9xlYZAPxpDDK1WDyDAPmgcB12sWtWyOBLRoqeOlhFh9DgQpmkZZJ07BOvVoCGY6tP1ImJ4JzEyR2gSPsREGErpCsNzfxtENWn3lQ8dZjDSCTdNIqOYPX0ryTTCybY+IFNLzT+ypbbtbh3mlwMdFki8X9AN2ccv81/RSWEp/G5lg7bcxuEzCJtfxqdfpgPCntEJ8baOWVpTGPeor/IFtekW2Hs1yxR3Q2m4XYnGYKyUmOxzXfp76JgO12r+EoCEIJMq5TSinu6EbgiroLWU9TN94/9sxVTFIzYp0Efeg8Wf2ZJ+9Nvie4cXG245oFz/7FrdnSGYeK8LSiW5a8RQ5AJgzFTTB57ymDArlmiU+tCX+TPuY9slvcr7RJhlbAVj3KRBC0zkHhqQwS76zzmyQW0UNjzH09Z624m8ngYaS7ZvfxsOyle0ld8whepXfrUOY2828mB1rBoH/at8He4j3hN3cw2w2dVIKreGS5mkf4Ggc+0g41SkEuFr6Wz9yfQu1vW9Mu54CCvP2U6OWomVwfiE0zQSkJ0RqVqWFYKAljM68k=
+  - secure: s/i1y+KgWDOAiPqsW9iyEL9YC09jsLiDiZYqaeFGojsV2CfvEP+Tw4cPt3T0Sk3eBSc74o4RjIlJtbJlMsHmA++EfE9NBhKOwdyryAHVSMW/4n1U/9OPRwuwGoesnIQRAJ3qPedKcYaeFhsGKNSNoKfcFXNqOcr9ITLIjcspVmxWLu1a0hpEX4BysJTVlya4BO2Bl4rB9556oq6JumH+nU+ubBw9p+h0VpMUhxHmlr0+0b6YmRw2qxL762udJXv3I1xvY4/DVXS4GHx+GM2MaaKJ2w6+HisJnhSoQqoJNCNI8QHZrTOhtPM5jlgXBq98h483I2RX/tBQpskQhSkex0TQ7AjL4Za2JtHiot4B/N+L5R8QGWm6s6QluxEhzZ7yCXWwEtVbwV041jJjIVqPmJ0VhLxvWAoPdZnVX9kqUAqZM16oZgv7+KN18lndweD7YRgI2roUi4mtMpCXqbxF/VIQ3qtXDsJMInEZvaTax/g4DqG72W8AozrYqUCstrguJtlW3P6Am3GIIuGrC2mN7MmaYilqpbpzo6TLOYBfE2fkXbVU/Pn+IH+q+/0oUiGWu2OAIgzIZSbzm3j3VKEk6IJ8aVPOEwWLcsFNvM/jRQanvwQ1Gwu8lsHa2uGuyAW2gtzae8Fediuzc6bdqBMEFfjkkW28JpJVHuvBzO5WkiI=

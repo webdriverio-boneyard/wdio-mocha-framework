@@ -1,1 +1,1 @@
-require('babel/register')({ plugins: ['rewire'] })
+require('babel-core/register')({ plugins: ['rewire'] })

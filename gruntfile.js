@@ -19,7 +19,7 @@ module.exports = function (grunt) {
         },
         mocha_istanbul: {
             coverage: {
-                src: ['test/*.js'],
+                src: ['test/*.spec.js'],
                 options: {
                     reporter: 'spec',
                     require: [

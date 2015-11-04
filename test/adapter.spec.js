@@ -10,7 +10,6 @@ let wrapCommand = sinon.spy()
 let runHook = sinon.spy()
 let Mocka = sinon.spy()
 let loadFiles = Mocka.prototype.loadFiles = sinon.spy()
-let reporter = Mocka.prototype.reporter = sinon.spy()
 let run = Mocka.prototype.run = sinon.stub()
 run.returns({ on: function () {} })
 Mocka.prototype.suite = { on: function () {} }

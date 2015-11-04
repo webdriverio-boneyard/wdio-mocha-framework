@@ -4,23 +4,29 @@ import adapter from '../lib/adapter'
 /**
  * create mocks
  */
-let require = sinon.spy()
-let send = sinon.spy()
 let wrapCommand = sinon.spy()
 let runHook = sinon.spy()
 let Mocka = sinon.spy()
 let loadFiles = Mocka.prototype.loadFiles = sinon.spy()
+let reporter = Mocka.prototype.reporter = sinon.stub()
 let run = Mocka.prototype.run = sinon.stub()
+let originalCWD, load, send
 run.returns({ on: function () {} })
 Mocka.prototype.suite = { on: function () {} }
 
 describe('mocha adapter', () => {
     before(() => {
-        adapter.__Rewire__('require', require)
-        adapter.__Rewire__('process', { send, cwd: () => '/mypath' })
         adapter.__Rewire__('Mocha', Mocka)
         adapter.__Rewire__('runHook', runHook)
         adapter.__Rewire__('wrapCommand', wrapCommand)
+
+        load = adapter.load = sinon.spy()
+        send = adapter.send = sinon.spy()
+
+        originalCWD = process.cwd
+        Object.defineProperty(process, 'cwd', {
+            value: function () { return '/mypath' }
+        })
     })
 
     describe('can load external modules', () => {
@@ -30,14 +36,14 @@ describe('mocha adapter', () => {
 
         it('should load proper external modules', () => {
             adapter.requireExternalModules(['js:moduleA', 'xy:moduleB'], ['yz:moduleC'])
-            require.calledWith('moduleA').should.be.true()
-            require.calledWith('moduleB').should.be.true()
-            require.calledWith('moduleC').should.be.true()
+            load.calledWith('moduleA').should.be.true()
+            load.calledWith('moduleB').should.be.true()
+            load.calledWith('moduleC').should.be.true()
         })
 
         it('should load local modules', () => {
             adapter.requireExternalModules(['./lib/myModule'])
-            require.lastCall.args[0].slice(-20).should.be.exactly('/mypath/lib/myModule')
+            load.lastCall.args[0].slice(-20).should.be.exactly('/mypath/lib/myModule')
         })
     })
 
@@ -69,7 +75,8 @@ describe('mocha adapter', () => {
     })
 
     after(() => {
-        adapter.__ResetDependency__('require')
-        adapter.__ResetDependency__('process')
+        Object.defineProperty(process, 'cwd', {
+            value: originalCWD
+        })
     })
 })

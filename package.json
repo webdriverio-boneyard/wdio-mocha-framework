@@ -43,6 +43,7 @@
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-env": "^0.4.4",
     "grunt-eslint": "^17.1.0",
     "grunt-mocha-istanbul": "^3.0.1",
     "grunt-npm": "0.0.2",

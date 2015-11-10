@@ -1,4 +1,6 @@
 module.exports = function (grunt) {
+    grunt.loadNpmTasks('grunt-env')
+
     grunt.initConfig({
         pkgFile: 'package.json',
         clean: ['build'],
@@ -21,11 +23,10 @@ module.exports = function (grunt) {
             coverage: {
                 src: ['test/*.spec.js'],
                 options: {
+                    scriptPath: require.resolve('isparta/bin/isparta'),
                     reporter: 'spec',
-                    require: [
-                        'should',
-                        './test/bootstrap'
-                    ]
+                    mochaOptions: ['--compilers', 'js:babel/register', '--recursive'],
+                    require: ['should']
                 }
             }
         },
@@ -51,11 +52,16 @@ module.exports = function (grunt) {
                 files: './lib/**/*.js',
                 tasks: ['babel:dist']
             }
+        },
+        env: {
+            test: {
+                BABEL_ENV: 'test'
+            }
         }
     })
 
     require('load-grunt-tasks')(grunt)
-    grunt.registerTask('default', ['eslint', 'build', 'mocha_istanbul'])
+    grunt.registerTask('default', ['eslint', 'build', 'env:test', 'mocha_istanbul'])
     grunt.registerTask('build', 'Build wdio-mocha-framework', function () {
         grunt.task.run([
             'clean',

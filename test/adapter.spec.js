@@ -4,6 +4,7 @@ import adapter from '../lib/adapter'
 /**
  * create mocks
  */
+const NOOP = function () {}
 let wrapCommand = sinon.spy()
 let runHook = sinon.spy()
 let Mocka = sinon.spy()
@@ -11,8 +12,32 @@ let loadFiles = Mocka.prototype.loadFiles = sinon.spy()
 let reporter = Mocka.prototype.reporter = sinon.stub()
 let run = Mocka.prototype.run = sinon.stub()
 let originalCWD, load, send
-run.returns({ on: function () {} })
-Mocka.prototype.suite = { on: function () {} }
+let config = {
+    onPrepare: NOOP,
+    before: NOOP,
+    beforeSuite: NOOP,
+    beforeHook: NOOP,
+    beforeTest: NOOP,
+    beforeCommand: NOOP,
+    afterCommand: NOOP,
+    afterTest: NOOP,
+    afterHook: NOOP,
+    afterSuite: NOOP,
+    after: NOOP,
+    onComplete: NOOP,
+    mochaOpts: {}
+}
+
+run.returns({
+    on: NOOP,
+    suite: {
+        beforeAll: NOOP,
+        beforeEach: NOOP,
+        afterEach: NOOP,
+        afterAll: NOOP
+    }
+})
+Mocka.prototype.suite = { on: NOOP }
 
 describe('mocha adapter', () => {
     before(() => {
@@ -51,7 +76,7 @@ describe('mocha adapter', () => {
         it('should have proper message payload', () => {
             let caps = { browserName: 'chrome' }
             let err = { unAllowedProp: true }
-            adapter.emit('suite:start', 0, caps, {}, err)
+            adapter.emit('suite:start', {}, 0, caps, {}, err)
             let msg = send.firstCall.args[0]
             msg.runner['0'].should.be.exactly(caps)
             msg.err.should.not.have.property('unAllowedProp')
@@ -60,7 +85,7 @@ describe('mocha adapter', () => {
 
     describe('runs Mocha tests', () => {
         it('should run return right amount of errors', () => {
-            let promise = adapter.run().then((failures) => {
+            let promise = adapter.run(0, config).then((failures) => {
                 failures.should.be.exactly(1234)
             })
             process.nextTick(() => run.callArgWith(0, 1234))

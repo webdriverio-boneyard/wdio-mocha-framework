@@ -11,6 +11,7 @@ let Mocka = sinon.spy()
 let loadFiles = Mocka.prototype.loadFiles = sinon.spy()
 let reporter = Mocka.prototype.reporter = sinon.stub()
 let run = Mocka.prototype.run = sinon.stub()
+let fullTrace = Mocka.prototype.fullTrace = sinon.stub()
 let originalCWD, load, send
 let config = {
     onPrepare: NOOP,
@@ -94,6 +95,8 @@ describe('mocha adapter', () => {
 
         it('should load files, wrap commands and run hooks', () => {
             loadFiles.called.should.be.true()
+            reporter.called.should.be.true()
+            fullTrace.called.should.be.true()
             wrapCommand.called.should.be.true()
             runHook.called.should.be.true()
         })

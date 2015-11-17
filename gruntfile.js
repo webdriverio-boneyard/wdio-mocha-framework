@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                 options: {
                     scriptPath: require.resolve('isparta/bin/isparta'),
                     reporter: 'spec',
-                    mochaOptions: ['--compilers', 'js:babel/register', '--recursive'],
+                    mochaOptions: ['--compilers', 'js:babel/register', '--recursive', '-t', '60000'],
                     require: ['should']
                 }
             }

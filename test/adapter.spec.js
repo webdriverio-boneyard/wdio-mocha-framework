@@ -49,6 +49,10 @@ describe('mocha adapter', () => {
         it('should immediatelly start run sequenz', () => {
             run.called.should.be.true()
         })
+
+        after(() => {
+            adapterFactory.__ResetDependency__('_MochaAdapter')
+        })
     })
 
     describe('MochaAdapter', () => {
@@ -121,5 +125,12 @@ describe('mocha adapter', () => {
                 value: originalCWD
             })
         })
+    })
+
+    after(() => {
+        adapterFactory.__ResetDependency__('Mocha')
+        adapterFactory.__ResetDependency__('wrapCommands')
+        adapterFactory.__ResetDependency__('runInFiberContext')
+        adapterFactory.__ResetDependency__('executeHooksWithArgs')
     })
 })

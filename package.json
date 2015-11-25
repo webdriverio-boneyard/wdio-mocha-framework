@@ -55,7 +55,9 @@
     "sinon": "^1.17.1"
   },
   "contributors": [
-    "Christian Bromann <github@christian-bromann.com>"
+    "George Crawford <george.crawford@ft.com>",
+    "Christian Bromann <github@christian-bromann.com>",
+    "George Crawford <g.o.crawford@gmail.com>"
   ],
   "babel": {
     "env": {

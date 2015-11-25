@@ -1,3 +1,5 @@
+import q from 'q'
+
 describe('dummy test', () => {
     before(() => {
         browser.addCommand('customWdio', function (a) {
@@ -18,6 +20,14 @@ describe('dummy test', () => {
                     resolve(a + 1)
                 }, 1000)
             })
+        })
+
+        browser.addCommand('customQPromise', function async (a) {
+            const defer = q.defer()
+            setTimeout(() => {
+                defer.resolve(a + 1)
+            }, 1000)
+            return defer.promise
         })
 
         browser.addCommand('customWrapWdio', function (a) {
@@ -57,6 +67,12 @@ describe('dummy test', () => {
         global.__wdio.customNativePromise.start = new Date().getTime()
         browser.customNativePromise(1).should.be.equal(2)
         global.__wdio.customNativePromise.end = new Date().getTime()
+    })
+
+    it('custom 1 promise', () => {
+        global.__wdio.customQPromise.start = new Date().getTime()
+        browser.customQPromise(1).should.be.equal(2)
+        global.__wdio.customQPromise.end = new Date().getTime()
     })
 
     it('custom command wrapping custom wdio', () => {

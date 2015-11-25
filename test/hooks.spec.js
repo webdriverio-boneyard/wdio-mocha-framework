@@ -496,6 +496,11 @@ describe.only('MochaAdapter executes custom commands', () => {
         duration.should.be.greaterThan(990)
     })
 
+    it('should defer execution until custom q promise command resolves', () => {
+        let duration = global.__wdio.customQPromise.end - global.__wdio.customQPromise.start
+        duration.should.be.greaterThan(990)
+    })
+
     it('should defer execution until custom command wrapping custom wdio command resolves', () => {
         let duration = global.__wdio.customWrapWdio.end - global.__wdio.customWrapWdio.start
         duration.should.be.greaterThan(990)

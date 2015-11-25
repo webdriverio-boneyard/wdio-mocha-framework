@@ -4,6 +4,7 @@ global.__wdio = {
     customWdio: {},
     customWdioPromise: {},
     customNativePromise: {},
+    customQPromise: {},
     customWrapWdio: {},
     customWrapWdioPromise: {},
     customWrapTwoPromises: {}

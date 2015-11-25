@@ -69,7 +69,7 @@ describe('dummy test', () => {
         global.__wdio.customNativePromise.end = new Date().getTime()
     })
 
-    it('custom 1 promise', () => {
+    it('custom q promise', () => {
         global.__wdio.customQPromise.start = new Date().getTime()
         browser.customQPromise(1).should.be.equal(2)
         global.__wdio.customQPromise.end = new Date().getTime()

@@ -1,6 +1,6 @@
 const NOOP = () => {}
 
-global.__wdio = {
+global.____wdio = {
     customWdio: {},
     customWdioPromise: {},
     customNativePromise: {},

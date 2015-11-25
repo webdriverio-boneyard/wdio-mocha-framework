@@ -482,37 +482,37 @@ describe.only('MochaAdapter executes custom commands', () => {
     })
 
     it('should defer execution until custom wdio command completes', () => {
-        let duration = global.__wdio.customWdio.end - global.__wdio.customWdio.start
+        let duration = global.____wdio.customWdio.end - global.____wdio.customWdio.start
         duration.should.be.greaterThan(990)
     })
 
     it('should defer execution until custom wdio promise command resolves', () => {
-        let duration = global.__wdio.customWdioPromise.end - global.__wdio.customWdioPromise.start
+        let duration = global.____wdio.customWdioPromise.end - global.____wdio.customWdioPromise.start
         duration.should.be.greaterThan(990)
     })
 
     it('should defer execution until custom native promise command resolves', () => {
-        let duration = global.__wdio.customNativePromise.end - global.__wdio.customNativePromise.start
+        let duration = global.____wdio.customNativePromise.end - global.____wdio.customNativePromise.start
         duration.should.be.greaterThan(990)
     })
 
     it('should defer execution until custom q promise command resolves', () => {
-        let duration = global.__wdio.customQPromise.end - global.__wdio.customQPromise.start
+        let duration = global.____wdio.customQPromise.end - global.____wdio.customQPromise.start
         duration.should.be.greaterThan(990)
     })
 
     it('should defer execution until custom command wrapping custom wdio command resolves', () => {
-        let duration = global.__wdio.customWrapWdio.end - global.__wdio.customWrapWdio.start
+        let duration = global.____wdio.customWrapWdio.end - global.____wdio.customWrapWdio.start
         duration.should.be.greaterThan(990)
     })
 
     it('should defer execution until custom command wrapping custom wdio promise command resolves', () => {
-        let duration = global.__wdio.customWrapWdioPromise.end - global.__wdio.customWrapWdioPromise.start
+        let duration = global.____wdio.customWrapWdioPromise.end - global.____wdio.customWrapWdioPromise.start
         duration.should.be.greaterThan(990)
     })
 
     it('should defer execution until custom command wrapping two native promise commands resolves', () => {
-        let duration = global.__wdio.customWrapTwoPromises.end - global.__wdio.customWrapTwoPromises.start
+        let duration = global.____wdio.customWrapTwoPromises.end - global.____wdio.customWrapTwoPromises.start
         duration.should.be.greaterThan(1990)
     })
 })

@@ -481,13 +481,33 @@ describe.only('MochaAdapter executes custom commands', () => {
         await adapter.run()
     })
 
-    it('should defer execution until custom command completes', () => {
-        let duration = global.__wdio.custom1.end - global.__wdio.custom1.start
+    it('should defer execution until custom wdio command completes', () => {
+        let duration = global.__wdio.customWdio.end - global.__wdio.customWdio.start
         duration.should.be.greaterThan(990)
     })
 
-    it('should defer execution until async custom command resolves', () => {
-        let duration = global.__wdio.custom2.end - global.__wdio.custom2.start
+    it('should defer execution until custom wdio promise command resolves', () => {
+        let duration = global.__wdio.customWdioPromise.end - global.__wdio.customWdioPromise.start
         duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom native promise command resolves', () => {
+        let duration = global.__wdio.customNativePromise.end - global.__wdio.customNativePromise.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom command wrapping custom wdio command resolves', () => {
+        let duration = global.__wdio.customWrapWdio.end - global.__wdio.customWrapWdio.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom command wrapping custom wdio promise command resolves', () => {
+        let duration = global.__wdio.customWrapWdioPromise.end - global.__wdio.customWrapWdioPromise.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom command wrapping two native promise commands resolves', () => {
+        let duration = global.__wdio.customWrapTwoPromises.end - global.__wdio.customWrapTwoPromises.start
+        duration.should.be.greaterThan(1990)
     })
 })

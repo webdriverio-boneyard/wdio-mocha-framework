@@ -1,11 +1,13 @@
 import configQPromises from './fixtures/hooks.using.q.promises'
 import configNativePromises from './fixtures/hooks.using.native.promises'
 import configWDIOCommands from './fixtures/hooks.using.wdio.commands'
+import configCustomCommands from './fixtures/hooks.using.custom.commands'
 import { MochaAdapter } from '../lib/adapter'
 
 const specs = ['./test/fixtures/sample.spec.js']
 const specs2 = ['./test/fixtures/sample2.spec.js']
 const specs3 = ['./test/fixtures/sample3.spec.js']
+const specs4 = ['./test/fixtures/sample4.spec.js']
 const NOOP = () => {}
 
 const WebdriverIO = class {}
@@ -236,7 +238,7 @@ describe('MochaAdapter executes hooks using native Promises', () => {
     })
 })
 
-describe('MochaAdapter executes hooks using native Promises', () => {
+describe('MochaAdapter executes hooks using WDIO commands', () => {
     before(async () => {
         global.browser = new WebdriverIO()
         const adapter = new MochaAdapter(0, configWDIOCommands, specs2, configWDIOCommands.capabilities)
@@ -469,5 +471,48 @@ describe('MochaAdapter executes hooks using 3rd party libs (q library)', () => {
             let duration = afterHook.end - afterHook.start
             duration.should.be.greaterThan(490)
         })
+    })
+})
+
+describe.only('MochaAdapter executes custom commands', () => {
+    before(async () => {
+        global.browser = new WebdriverIO()
+        const adapter = new MochaAdapter(0, configCustomCommands, specs4, configCustomCommands.capabilities)
+        await adapter.run()
+    })
+
+    it('should defer execution until custom wdio command completes', () => {
+        let duration = global.____wdio.customWdio.end - global.____wdio.customWdio.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom wdio promise command resolves', () => {
+        let duration = global.____wdio.customWdioPromise.end - global.____wdio.customWdioPromise.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom native promise command resolves', () => {
+        let duration = global.____wdio.customNativePromise.end - global.____wdio.customNativePromise.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom q promise command resolves', () => {
+        let duration = global.____wdio.customQPromise.end - global.____wdio.customQPromise.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom command wrapping custom wdio command resolves', () => {
+        let duration = global.____wdio.customWrapWdio.end - global.____wdio.customWrapWdio.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom command wrapping custom wdio promise command resolves', () => {
+        let duration = global.____wdio.customWrapWdioPromise.end - global.____wdio.customWrapWdioPromise.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom command wrapping two native promise commands resolves', () => {
+        let duration = global.____wdio.customWrapTwoPromises.end - global.____wdio.customWrapTwoPromises.start
+        duration.should.be.greaterThan(1990)
     })
 })

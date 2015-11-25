@@ -1,11 +1,13 @@
 import configQPromises from './fixtures/hooks.using.q.promises'
 import configNativePromises from './fixtures/hooks.using.native.promises'
 import configWDIOCommands from './fixtures/hooks.using.wdio.commands'
+import configCustomCommands from './fixtures/hooks.using.custom.commands'
 import { MochaAdapter } from '../lib/adapter'
 
 const specs = ['./test/fixtures/sample.spec.js']
 const specs2 = ['./test/fixtures/sample2.spec.js']
 const specs3 = ['./test/fixtures/sample3.spec.js']
+const specs4 = ['./test/fixtures/sample4.spec.js']
 const NOOP = () => {}
 
 const WebdriverIO = class {}
@@ -236,7 +238,7 @@ describe('MochaAdapter executes hooks using native Promises', () => {
     })
 })
 
-describe('MochaAdapter executes hooks using native Promises', () => {
+describe('MochaAdapter executes hooks using WDIO commands', () => {
     before(async () => {
         global.browser = new WebdriverIO()
         const adapter = new MochaAdapter(0, configWDIOCommands, specs2, configWDIOCommands.capabilities)
@@ -469,5 +471,23 @@ describe('MochaAdapter executes hooks using 3rd party libs (q library)', () => {
             let duration = afterHook.end - afterHook.start
             duration.should.be.greaterThan(490)
         })
+    })
+})
+
+describe.only('MochaAdapter executes custom commands', () => {
+    before(async () => {
+        global.browser = new WebdriverIO()
+        const adapter = new MochaAdapter(0, configCustomCommands, specs4, configCustomCommands.capabilities)
+        await adapter.run()
+    })
+
+    it('should defer execution until custom command completes', () => {
+        let duration = global.__wdio.custom1.end - global.__wdio.custom1.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until async custom command resolves', () => {
+        let duration = global.__wdio.custom2.end - global.__wdio.custom2.start
+        duration.should.be.greaterThan(990)
     })
 })

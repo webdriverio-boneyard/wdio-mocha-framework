@@ -4,7 +4,8 @@
   "description": "A WebdriverIO plugin. Adapter for Mocha testing framework.",
   "main": "build/adapter.js",
   "scripts": {
-    "test": "./node_modules/.bin/grunt"
+    "test": "grunt",
+    "dev": "mocha --watch -r should -t 50000 --compilers js:babel/register test/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -49,6 +50,7 @@
     "grunt-npm": "0.0.2",
     "isparta": "^3.5.3",
     "load-grunt-tasks": "^3.2.0",
+    "q": "^1.4.1",
     "should": "^7.1.0",
     "sinon": "^1.17.1"
   },

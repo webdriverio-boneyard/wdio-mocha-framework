@@ -228,8 +228,9 @@ describe('MochaAdapter executes hooks using native Promises', () => {
         })
 
         it('should contain capabilities and spec parameters', () => {
-            afterHook.args[0].should.be.equal(configNativePromises.capabilities)
-            afterHook.args[1].should.be.equal(specs)
+            afterHook.args[0].should.be.equal(0)
+            afterHook.args[1].should.be.equal(configNativePromises.capabilities)
+            afterHook.args[2].should.be.equal(specs)
         })
     })
 

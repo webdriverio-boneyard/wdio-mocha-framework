@@ -49,6 +49,13 @@ describe('dummy test', () => {
                 resolve(c)
             })
         })
+
+        browser.addCommand('customHandleWdioAsPromise', function async (a) {
+            return browser.customWdio(a)
+            .then((b) => {
+                return b + 1
+            })
+        })
     })
 
     it('custom wdio', () => {
@@ -91,6 +98,12 @@ describe('dummy test', () => {
         global.____wdio.customWrapTwoPromises.start = new Date().getTime()
         browser.customWrapTwoPromises(1).should.be.equal(3)
         global.____wdio.customWrapTwoPromises.end = new Date().getTime()
+    })
+
+    it('custom command wrapping two native promise commands', () => {
+        global.____wdio.customHandleWdioAsPromise.start = new Date().getTime()
+        browser.customHandleWdioAsPromise(1).should.be.equal(3)
+        global.____wdio.customHandleWdioAsPromise.end = new Date().getTime()
     })
 
     after(() => {

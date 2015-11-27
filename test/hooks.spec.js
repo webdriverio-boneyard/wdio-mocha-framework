@@ -474,7 +474,7 @@ describe('MochaAdapter executes hooks using 3rd party libs (q library)', () => {
     })
 })
 
-describe.only('MochaAdapter executes custom commands', () => {
+describe('MochaAdapter executes custom commands', () => {
     before(async () => {
         global.browser = new WebdriverIO()
         const adapter = new MochaAdapter(0, configCustomCommands, specs4, configCustomCommands.capabilities)
@@ -513,6 +513,13 @@ describe.only('MochaAdapter executes custom commands', () => {
 
     it('should defer execution until custom command wrapping two native promise commands resolves', () => {
         let duration = global.____wdio.customWrapTwoPromises.end - global.____wdio.customWrapTwoPromises.start
+        duration.should.be.greaterThan(1990)
+    })
+
+    // Doesn't currently wait: AssertionError: expected 0 to be above 1990
+    // See: https://github.com/webdriverio/wdio-sync/issues/16
+    it.skip('should defer execution until custom command wrapping wdio comamnd treated as promise resolves', () => {
+        let duration = global.____wdio.customHandleWdioAsPromise.end - global.____wdio.customHandleWdioAsPromise.start
         duration.should.be.greaterThan(1990)
     })
 })

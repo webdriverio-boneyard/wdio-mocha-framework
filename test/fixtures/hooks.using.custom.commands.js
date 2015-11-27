@@ -7,7 +7,8 @@ global.____wdio = {
     customQPromise: {},
     customWrapWdio: {},
     customWrapWdioPromise: {},
-    customWrapTwoPromises: {}
+    customWrapTwoPromises: {},
+    customHandleWdioAsPromise: {}
 }
 
 export default {

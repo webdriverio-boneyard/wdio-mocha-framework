@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/webdriverio/wdio-mocha-framework#readme",
   "dependencies": {
-    "mocha": "^2.3.3",
+    "mocha": "berkerpeksag/mocha#1764",
     "wdio-sync": "^0.2.0"
   },
   "devDependencies": {

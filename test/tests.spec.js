@@ -20,26 +20,26 @@ describe('MochaAdapter executes specs asyncronous', () => {
     })
 
     it('should run async commands in beforeEach blocks', () => {
-        global._____wdio.beforeEach.should.be.greaterThan(500)
+        global._____wdio.beforeEach.should.be.greaterThan(499)
     })
 
     it('should run async commands in before blocks', () => {
-        global._____wdio.before.should.be.greaterThan(500)
+        global._____wdio.before.should.be.greaterThan(499)
     })
 
     it('should run async commands in it blocks', () => {
-        global._____wdio.it.should.be.greaterThan(500)
+        global._____wdio.it.should.be.greaterThan(499)
     })
 
     it('should run async commands in nested it blocks', () => {
-        global._____wdio.nestedit.should.be.greaterThan(500)
+        global._____wdio.nestedit.should.be.greaterThan(499)
     })
 
     it('should run async commands in after blocks', () => {
-        global._____wdio.after.should.be.greaterThan(500)
+        global._____wdio.after.should.be.greaterThan(499)
     })
 
     it('should run async commands in afterEach blocks', () => {
-        global._____wdio.afterEach.should.be.greaterThan(500)
+        global._____wdio.afterEach.should.be.greaterThan(499)
     })
 })

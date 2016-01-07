@@ -56,21 +56,25 @@ describe('mocha adapter', () => {
     })
 
     describe('MochaAdapter', () => {
-        let adapter, load, send, originalCWD
+        let adapter, load, send, sendInternal, originalCWD
 
+        let cid = 1
         let config = { framework: 'mocha' }
         let specs = ['fileA.js', 'fileB.js']
         let caps = { browserName: 'chrome' }
 
         before(() => {
-            adapter = new MochaAdapter(1, config, specs, caps)
-            load = adapter.load = sinon.spy()
-            send = adapter.send = sinon.spy()
-
             originalCWD = process.cwd
             Object.defineProperty(process, 'cwd', {
                 value: function () { return '/mypath' }
             })
+        })
+
+        beforeEach(() => {
+            adapter = new MochaAdapter(cid, config, specs, caps)
+            load = adapter.load = sinon.spy()
+            send = adapter.send = sinon.spy()
+            sendInternal = adapter.sendInternal = sinon.spy()
         })
 
         describe('can load external modules', () => {
@@ -96,10 +100,34 @@ describe('mocha adapter', () => {
             it('should have proper message payload', () => {
                 let err = { unAllowedProp: true, message: 'Uuups' }
                 adapter.emit('suite:start', config, err)
+
                 let msg = send.firstCall.args[0]
-                msg.runner[1].should.be.exactly(caps)
+                msg.type.should.be.exactly('suite:start')
+                msg.cid.should.be.exactly(cid)
+                msg.specs.should.be.exactly(specs)
+                msg.runner[cid].should.be.exactly(caps)
                 msg.err.should.not.have.property('unAllowedProp')
                 msg.err.message.should.be.exactly('Uuups')
+            })
+
+            it('should not emit an internal message by default', () => {
+                adapter.emit('suite:start', config)
+                sendInternal.called.should.be.false()
+            })
+
+            it('should emit an internal message when starting a test', () => {
+                adapter.emit('test:start', config)
+                let msg = sendInternal.firstCall.args[0]
+                msg.type.should.be.exactly('test:start')
+                msg.cid.should.be.exactly(cid)
+                msg.specs.should.be.exactly(specs)
+                msg.runner[cid].should.be.exactly(caps)
+            })
+
+            it('should not emit any messages for root test suite events', () => {
+                adapter.emit('suite:end', { root: true })
+                send.called.should.be.false()
+                sendInternal.called.should.be.false()
             })
         })
 

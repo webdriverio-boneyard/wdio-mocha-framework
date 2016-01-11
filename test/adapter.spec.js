@@ -117,8 +117,10 @@ describe('mocha adapter', () => {
 
             it('should emit an internal message when starting a test', () => {
                 adapter.emit('test:start', config)
-                let msg = sendInternal.firstCall.args[0]
-                msg.type.should.be.exactly('test:start')
+                let event = sendInternal.firstCall.args[0]
+                event.should.be.exactly('test:start')
+
+                let msg = sendInternal.firstCall.args[1]
                 msg.cid.should.be.exactly(cid)
                 msg.specs.should.be.exactly(specs)
                 msg.runner[cid].should.be.exactly(caps)

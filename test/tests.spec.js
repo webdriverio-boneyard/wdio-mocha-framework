@@ -12,7 +12,7 @@ WebdriverIO.prototype = {
 
 process.send = NOOP
 
-describe('MochaAdapter aaa', () => {
+describe('MochaAdapter', () => {
     describe('executes specs synchronous', () => {
         before(async () => {
             global.browser = new WebdriverIO()

@@ -7,7 +7,7 @@
     "test": "grunt",
     "dev": "mocha --watch -r should -t 50000 --compilers js:babel/register test/*.spec.js",
     "build": "grunt build",
-    "prepublish": "npm prune && npm build"
+    "prepublish": "npm prune && npm run build"
   },
   "repository": {
     "type": "git",

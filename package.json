@@ -5,7 +5,9 @@
   "main": "build/adapter.js",
   "scripts": {
     "test": "grunt",
-    "dev": "mocha --watch -r should -t 50000 --compilers js:babel/register test/*.spec.js"
+    "dev": "mocha --watch -r should -t 50000 --compilers js:babel/register test/*.spec.js",
+    "build": "grunt build",
+    "prepublish": "npm prune && npm build"
   },
   "repository": {
     "type": "git",

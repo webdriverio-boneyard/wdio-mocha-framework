@@ -2,6 +2,7 @@ import { MochaAdapter } from '../lib/adapter'
 
 const syncSpecs = ['./test/fixtures/tests.sync.spec.js']
 const asyncSpecs = ['./test/fixtures/tests.async.spec.js']
+const syncAsyncSpecs = ['./test/fixtures/tests.sync.async.spec.js']
 const NOOP = () => {}
 
 const WebdriverIO = class {}
@@ -76,6 +77,40 @@ describe('MochaAdapter', () => {
 
         it('should run async commands in afterEach blocks', () => {
             global.______wdio.afterEach.should.be.greaterThan(499)
+        })
+    })
+
+    describe('executes specs synchronous and asynchronous', () => {
+        before(async () => {
+            global.browser = new WebdriverIO()
+            global.browser.options = {}
+            const adapter = new MochaAdapter(0, {}, syncAsyncSpecs, {})
+            await adapter.run()
+        })
+
+        it('should run sync commands in beforeEach blocks', () => {
+            global._______wdio.beforeEachSync.should.be.greaterThan(499)
+            global._______wdio.beforeEachAsync.should.be.greaterThan(499)
+        })
+
+        it('should run sync commands in before blocks', () => {
+            global._______wdio.beforeSync.should.be.greaterThan(499)
+            global._______wdio.beforeAsync.should.be.greaterThan(499)
+        })
+
+        it('should run sync commands in it blocks', () => {
+            global._______wdio.itSync.should.be.greaterThan(499)
+            global._______wdio.itAsync.should.be.greaterThan(499)
+        })
+
+        it('should run sync commands in after blocks', () => {
+            global._______wdio.afterSync.should.be.greaterThan(499)
+            global._______wdio.afterAsync.should.be.greaterThan(499)
+        })
+
+        it('should run sync commands in afterEach blocks', () => {
+            global._______wdio.afterEachSync.should.be.greaterThan(499)
+            global._______wdio.afterEachAsync.should.be.greaterThan(499)
         })
     })
 })

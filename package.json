@@ -56,6 +56,9 @@
     "should": "^7.1.0",
     "sinon": "^1.17.1"
   },
+  "peerDependencies": {
+    "webdriverio": "^4.0.6"
+  },
   "contributors": [
     "George Crawford <george.crawford@ft.com>",
     "Christian Bromann <github@christian-bromann.com>",

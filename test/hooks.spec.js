@@ -23,7 +23,8 @@ WebdriverIO.prototype = {
     }),
     pause: (ms = 500) => new Promise((r) => {
         setTimeout(() => r(), ms)
-    })
+    }),
+    getPrototype: () => WebdriverIO.prototype
 }
 
 process.send = NOOP

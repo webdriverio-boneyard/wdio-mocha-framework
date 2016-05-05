@@ -1,6 +1,6 @@
 {
   "name": "wdio-mocha-framework",
-  "version": "0.2.14",
+  "version": "0.2.13",
   "description": "A WebdriverIO plugin. Adapter for Mocha testing framework.",
   "main": "build/adapter.js",
   "scripts": {
@@ -55,9 +55,6 @@
     "q": "^1.4.1",
     "should": "^7.1.0",
     "sinon": "^1.17.1"
-  },
-  "peerDependencies": {
-    "webdriverio": "^4.0.6"
   },
   "contributors": [
     "George Crawford <george.crawford@ft.com>",

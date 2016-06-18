@@ -1,6 +1,6 @@
 {
   "name": "wdio-mocha-framework",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A WebdriverIO plugin. Adapter for Mocha testing framework.",
   "main": "build/adapter.js",
   "scripts": {

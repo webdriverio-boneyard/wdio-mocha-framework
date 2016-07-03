@@ -10,7 +10,7 @@ The easiest way is to keep `wdio-mocha-framework` as a devDependency in your `pa
 ```json
 {
   "devDependencies": {
-    "wdio-mocha-framework": "~0.1"
+    "wdio-mocha-framework": "~0.3.5"
   }
 }
 ```

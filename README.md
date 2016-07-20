@@ -45,9 +45,9 @@ Options will be passed to the Mocha instance. See the full list of Mocha options
 
 ----
 
-## `mochaOpts.requires`
+## `mochaOpts.require`
 
-The `requires` option is useful when you want to add or extend some basic functionality.
+The `require` option is useful when you want to add or extend some basic functionality.
 For example, let's try to create an anonymous `describe`:
 
 **wdio.conf.js**
@@ -55,7 +55,7 @@ For example, let's try to create an anonymous `describe`:
 ```js
 {
   mochaOpts: {
-    requires: './hooks/mocha.js'
+    require: './hooks/mocha.js'
   }
 }
 ```

@@ -9,7 +9,7 @@ describe('sample test', () => {
 
     before(() => {
         const start = new Date().getTime()
-        return new Promise((reject, resolve) => {
+        return new Promise((resolve, reject) => {
             setTimeout(() => {
                 global._____wdio.promisehook = new Date().getTime() - start
                 resolve()
@@ -31,7 +31,7 @@ describe('sample test', () => {
 
     it('can do promises', () => {
         const start = new Date().getTime()
-        return new Promise((reject, resolve) => {
+        return new Promise((resolve, reject) => {
             setTimeout(() => {
                 global._____wdio.promise = new Date().getTime() - start
                 resolve()

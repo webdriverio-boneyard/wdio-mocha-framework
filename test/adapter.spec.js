@@ -84,21 +84,15 @@ describe('mocha adapter', () => {
             })
 
             it('should load proper external modules', () => {
-                adapter.requireExternalModules(['js:moduleA', 'xy:moduleB'])
+                adapter.requireExternalModules(['js:moduleA', 'xy:moduleB'], ['yz:moduleC'])
                 load.calledWith('moduleA').should.be.true()
                 load.calledWith('moduleB').should.be.true()
+                load.calledWith('moduleC').should.be.true()
             })
 
             it('should load local modules', () => {
                 adapter.requireExternalModules(['./lib/myModule'])
                 load.lastCall.args[0].slice(-20).should.be.exactly('/mypath/lib/myModule')
-            })
-
-            it('should load a module with context', () => {
-                let context = { context: true }
-
-                adapter.requireExternalModules(['js:moduleA'], context)
-                load.calledWith('moduleA', context).should.be.true()
             })
         })
 

@@ -18,7 +18,7 @@ const MOCHA_OPTS = {
 }
 process.send = NOOP
 
-describe('MochaAdapter', () => {
+describe('retries flaky tests', () => {
     it('should be able to retry flaky sync tests', async () => {
         global.browser = new WebdriverIO()
         global.browser.options = {}

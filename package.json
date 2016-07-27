@@ -1,6 +1,6 @@
 {
   "name": "wdio-mocha-framework",
-  "version": "0.3.5",
+  "version": "0.3.7",
   "description": "A WebdriverIO plugin. Adapter for Mocha testing framework.",
   "main": "build/adapter.js",
   "scripts": {
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/webdriverio/wdio-mocha-framework#readme",
   "dependencies": {
     "mocha": "^2.3.3",
-    "wdio-sync": "0.5.6",
+    "wdio-sync": "0.5.8",
     "babel-runtime": "^5.8.25"
   },
   "devDependencies": {
@@ -59,7 +59,8 @@
   "contributors": [
     "George Crawford <george.crawford@ft.com>",
     "Christian Bromann <github@christian-bromann.com>",
-    "George Crawford <g.o.crawford@gmail.com>"
+    "George Crawford <g.o.crawford@gmail.com>",
+    "Alexander Abashkin <monolithed@gmail.com>"
   ],
   "babel": {
     "env": {

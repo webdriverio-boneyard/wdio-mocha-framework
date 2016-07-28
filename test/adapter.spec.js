@@ -56,7 +56,7 @@ describe('mocha adapter', () => {
     })
 
     describe('MochaAdapter', () => {
-        let adapter, load, send, sendInternal, originalCWD
+        let adapter, load, send, sendInternal, originalCWD, requireExternalModules
 
         let cid = 1
         let config = { framework: 'mocha' }
@@ -72,27 +72,40 @@ describe('mocha adapter', () => {
 
         beforeEach(() => {
             adapter = new MochaAdapter(cid, config, specs, caps)
+            requireExternalModules = sinon.spy()
             load = adapter.load = sinon.spy()
             send = adapter.send = sinon.spy()
+
             sendInternal = adapter.sendInternal = sinon.spy()
         })
 
         describe('can load external modules', () => {
             it('should do nothing if no modules are required', () => {
-                adapter.requireExternalModules()
+                adapter.requireExternalModules([])
                 load.called.should.be.false()
             })
 
-            it('should load proper external modules', () => {
-                adapter.requireExternalModules(['js:moduleA', 'xy:moduleB'], ['yz:moduleC'])
-                load.calledWith('moduleA').should.be.true()
-                load.calledWith('moduleB').should.be.true()
-                load.calledWith('moduleC').should.be.true()
+            it('should throw an exception if passed invalid name', () => {
+                adapter.requireExternalModules.bind(adapter, [1]).should.throw();
             })
 
-            it('should load local modules', () => {
-                adapter.requireExternalModules(['./lib/myModule'])
-                load.lastCall.args[0].slice(-20).should.be.exactly('/mypath/lib/myModule')
+            it('should do nothing if no compilers', () => {
+                adapter.options({ compilers: [], require: [] })
+                load.called.should.be.false()
+                load.called.should.be.false()
+            })
+
+            it('should load modules', () => {
+                let context = { context: true }
+
+                adapter.options({
+                    require: './lib/moduleA',
+                    compilers: ['js:moduleB', './lib/moduleC']
+                }, context)
+
+                load.calledWith('/mypath/lib/moduleA', context).should.be.true()
+                load.calledWith('moduleB', context).should.be.true()
+                load.calledWith('/mypath/lib/moduleC', context).should.be.true()
             })
         })
 

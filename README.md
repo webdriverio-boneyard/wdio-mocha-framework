@@ -31,7 +31,8 @@ Following code shows the default wdio test runner configuration...
 // wdio.conf.js
 module.exports = {
   // ...
-  framework: 'mocha'
+  framework: 'mocha',
+
   mochaOpts: {
     ui: 'bdd'
   }
@@ -44,5 +45,75 @@ module.exports = {
 Options will be passed to the Mocha instance. See the full list of Mocha options at [http://mochajs.org/](http://mochajs.org/)
 
 ----
+
+## `mochaOpts.require (string|string[])`
+
+The `require` option is useful when you want to add or extend some basic functionality. <br />
+For example, let's try to create an anonymous `describe`:
+
+**wdio.conf.js**
+
+```js
+{
+  suites: {
+    login: ['tests/login/*.js']
+  },
+
+  mochaOpts: {
+    require: './hooks/mocha.js'
+  }
+}
+```
+
+**./hooks/mocha.js**
+
+```js
+import path from 'path';
+
+let { context, file, mocha, options } = module.parent.context;
+let { describe } = context;
+
+context.describe = function (name, callback) {
+	if (callback) {
+		return describe(...arguments);
+	} else {
+		callback = name;
+		name = path.basename(file, '.js');
+
+		return describe(name, callback);
+	}
+}
+```
+
+**./tests/TEST-XXX.js**
+
+```js
+describe(() => {
+	it('Login form', () => {
+		this.skip();
+	});
+});
+```
+
+**Output**
+
+```
+TEST-XXX
+   ✓ Login form
+```
+
+## `mochaOpts.compilers (string[])`
+
+Use the given module(s) to compile files
+
+CoffeeScript and similar transpilers may be used by mapping the file extensions and the module name.
+
+```js
+{
+  mochaOpts: {
+    compilers: ['coffee:foo', './bar.js']
+  }
+}
+```
 
 For more information on WebdriverIO see the [homepage](http://webdriver.io).

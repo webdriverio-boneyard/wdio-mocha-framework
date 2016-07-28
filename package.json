@@ -59,8 +59,8 @@
   "contributors": [
     "George Crawford <george.crawford@ft.com>",
     "Christian Bromann <github@christian-bromann.com>",
-    "George Crawford <g.o.crawford@gmail.com>",
-    "Alexander Abashkin <monolithed@gmail.com>"
+    "Alexander Abashkin <monolithed@gmail.com>",
+    "George Crawford <g.o.crawford@gmail.com>"
   ],
   "babel": {
     "env": {

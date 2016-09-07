@@ -127,6 +127,7 @@ describe('MochaAdapter', () => {
     describe('MochaAdapter can execute it.only and it.skip', () => {
         before(async () => {
             global.browser = new WebdriverIO()
+            global.browser.options = {}
             const adapter = new MochaAdapter(0, {}, onlySpecs, {});
             (await adapter.run()).should.be.equal(0, 'actual test failed')
         })

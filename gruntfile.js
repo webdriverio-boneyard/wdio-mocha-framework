@@ -34,7 +34,7 @@ module.exports = function (grunt) {
             options: {
                 parser: 'babel-eslint'
             },
-            target: ['lib/adapter.js']
+            target: ['lib/adapter.js', 'test/**/*.js']
         },
         contributors: {
             options: {

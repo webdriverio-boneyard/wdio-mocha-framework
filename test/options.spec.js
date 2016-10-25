@@ -25,7 +25,7 @@ describe('Options', () => {
     it('should apply modules', async () => {
         for (let option of ['compilers', 'require']) {
             const options = { [option]: [module(option)] }
-            const actual = (await adapter(options, module( `${option}.spec`)).run())
+            const actual = (await adapter(options, module(`${option}.spec`)).run())
 
             actual.should.be.equal(0, `actual test "${option}" failed`)
         }

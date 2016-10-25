@@ -56,7 +56,7 @@ describe('mocha adapter', () => {
     })
 
     describe('MochaAdapter', () => {
-        let adapter, load, send, sendInternal, originalCWD, requireExternalModules
+        let adapter, load, send, sendInternal, originalCWD
 
         let cid = 1
         let config = { framework: 'mocha' }
@@ -72,7 +72,6 @@ describe('mocha adapter', () => {
 
         beforeEach(() => {
             adapter = new MochaAdapter(cid, config, specs, caps)
-            requireExternalModules = sinon.spy()
             load = adapter.load = sinon.spy()
             send = adapter.send = sinon.spy()
 
@@ -86,7 +85,7 @@ describe('mocha adapter', () => {
             })
 
             it('should throw an exception if passed invalid name', () => {
-                adapter.requireExternalModules.bind(adapter, [1]).should.throw();
+                adapter.requireExternalModules.bind(adapter, [1]).should.throw()
             })
 
             it('should do nothing if no compilers', () => {

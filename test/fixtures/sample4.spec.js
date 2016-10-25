@@ -8,8 +8,7 @@ describe('dummy test', () => {
         })
 
         browser.addCommand('customWdioPromise', function async (a) {
-            return browser.pause(1000)
-            .then(() => {
+            return browser.pause(1000).then(() => {
                 return a + 1
             })
         })

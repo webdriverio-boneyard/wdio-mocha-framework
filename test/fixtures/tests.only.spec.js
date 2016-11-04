@@ -15,7 +15,14 @@ describe('dummy test', () => {
 
     it.only('should skip within spec', function () {
         this.skip()
-        throw new Error('haha')
+        throw new Error('ignore me')
+    })
+
+    it.only('should skip within async spec', function async () {
+        return browser.command().then(() => {
+            this.skip()
+            throw new Error('ignore me')
+        })
     })
 
     it('should not run this', () => {

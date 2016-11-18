@@ -59,7 +59,8 @@ describe('mocha adapter', () => {
         let adapter, load, send, sendInternal, originalCWD
 
         let cid = 1
-        let config = { framework: 'mocha' }
+        const title = 'mocha-tests'
+        let config = { framework: 'mocha', title: title }
         let specs = ['fileA.js', 'fileB.js']
         let caps = { browserName: 'chrome' }
 
@@ -117,6 +118,7 @@ describe('mocha adapter', () => {
                 let msg = send.firstCall.args[0]
                 msg.type.should.be.exactly('suite:start')
                 msg.cid.should.be.exactly(cid)
+                msg.uid.should.be.equal(title)
                 msg.specs.should.be.exactly(specs)
                 msg.runner[cid].should.be.exactly(caps)
                 msg.err.should.not.have.property('unAllowedProp')
@@ -135,6 +137,7 @@ describe('mocha adapter', () => {
 
                 let msg = sendInternal.firstCall.args[1]
                 msg.cid.should.be.exactly(cid)
+                msg.uid.should.be.equal(title)
                 msg.specs.should.be.exactly(specs)
                 msg.runner[cid].should.be.exactly(caps)
             })

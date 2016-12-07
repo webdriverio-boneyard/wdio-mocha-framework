@@ -73,7 +73,8 @@ describe('mocha adapter', () => {
         beforeEach(() => {
             adapter = new MochaAdapter(cid, config, specs, caps)
             load = adapter.load = sinon.spy()
-            send = adapter.send = sinon.spy()
+            send = adapter.send = sinon.stub()
+            send.returns(true)
 
             sendInternal = adapter.sendInternal = sinon.spy()
         })

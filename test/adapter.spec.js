@@ -162,6 +162,25 @@ describe('mocha adapter', () => {
             })
         })
 
+        it('should wait until all events were sent', () => {
+            const start = (new Date()).getTime()
+            let promise = adapter.run().then((failures) => {
+                const end = (new Date()).getTime();
+                (end - start).should.be.greaterThan(500)
+                failures.should.be.exactly(1234)
+            })
+            adapter.emit('foobar', {}, {})
+            adapter.emit('foobar2', {}, {})
+            process.nextTick(() => run.callArgWith(0, 1234))
+
+            setTimeout(() => {
+                send.args[0][3]()
+                send.args[1][3]()
+            }, 500)
+
+            return promise
+        })
+
         after(() => {
             Object.defineProperty(process, 'cwd', {
                 value: originalCWD

@@ -118,7 +118,7 @@ describe('mocha adapter', () => {
                 let msg = send.firstCall.args[0]
                 msg.type.should.be.exactly('suite:start')
                 msg.cid.should.be.exactly(cid)
-                msg.uid.should.be.equal(title)
+                msg.uid.should.startWith(title)
                 msg.specs.should.be.exactly(specs)
                 msg.runner[cid].should.be.exactly(caps)
                 msg.err.should.not.have.property('unAllowedProp')
@@ -137,7 +137,7 @@ describe('mocha adapter', () => {
 
                 let msg = sendInternal.firstCall.args[1]
                 msg.cid.should.be.exactly(cid)
-                msg.uid.should.be.equal(title)
+                msg.uid.should.startWith(title)
                 msg.specs.should.be.exactly(specs)
                 msg.runner[cid].should.be.exactly(caps)
             })
@@ -173,8 +173,8 @@ describe('mocha adapter', () => {
                 (end - start).should.be.greaterThan(500)
                 failures.should.be.exactly(1234)
             })
-            adapter.emit('foobar', {}, {})
-            adapter.emit('foobar2', {}, {})
+            adapter.emit('suite:start', {}, {})
+            adapter.emit('suite:end', {}, {})
             process.nextTick(() => run.callArgWith(0, 1234))
 
             setTimeout(() => {

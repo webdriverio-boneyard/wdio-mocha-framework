@@ -139,6 +139,7 @@ describe('MochaAdapter executes hooks using native Promises', () => {
             let test = beforeTestHook.args[0]
             test.type.should.be.equal('beforeTest')
             test.title.should.be.equal('sample test')
+            test.fullTitle.should.be.equal('dummy test sample test')
             test.parent.should.be.equal('dummy test')
             test.passed.should.be.false()
         })
@@ -209,6 +210,7 @@ describe('MochaAdapter executes hooks using native Promises', () => {
             let test = afterTestHook.args[0]
             test.type.should.be.equal('afterTest')
             test.title.should.be.equal('sample test')
+            test.fullTitle.should.be.equal('dummy test sample test')
             test.parent.should.be.equal('dummy test')
             test.duration.should.be.greaterThan(2990) // 2000ms command, 2 * 500ms hooks
             test.passed.should.be.true()

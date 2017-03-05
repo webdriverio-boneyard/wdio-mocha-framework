@@ -1,5 +1,9 @@
-WDIO Mocha [![Build Status](https://travis-ci.org/webdriverio/wdio-mocha-framework.svg?branch=master)](https://travis-ci.org/webdriverio/wdio-mocha-framework) [![Code Climate](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/badges/gpa.svg)](https://codeclimate.com/github/webdriverio/wdio-mocha-framework) [![Test Coverage](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/badges/coverage.svg)](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/coverage)
+WDIO Mocha
 ==========
+
+[![Build Status](https://travis-ci.org/webdriverio/wdio-mocha-framework.svg?branch=master)](https://travis-ci.org/webdriverio/wdio-mocha-framework) [![Code Climate](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/badges/gpa.svg)](https://codeclimate.com/github/webdriverio/wdio-mocha-framework) [![Test Coverage](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/badges/coverage.svg)](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/coverage) [![Dependency Status](https://www.versioneye.com/user/projects/58bc69bd01b5b7003d620a09/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58bc69bd01b5b7003d620a09)
+
+***
 
 > A WebdriverIO plugin. Adapter for Mocha testing framework.
 
@@ -10,7 +14,7 @@ The easiest way is to keep `wdio-mocha-framework` as a devDependency in your `pa
 ```json
 {
   "devDependencies": {
-    "wdio-mocha-framework": "~0.3.5"
+    "wdio-mocha-framework": "~0.5.9"
   }
 }
 ```
@@ -114,6 +118,31 @@ CoffeeScript and similar transpilers may be used by mapping the file extensions 
     compilers: ['coffee:foo', './bar.js']
   }
 }
+```
+
+## Development
+
+All commands can be found in the package.json. The most important are:
+
+Watch changes:
+
+```sh
+$ npm run watch
+```
+
+Run tests:
+
+```sh
+$ npm test
+
+# run test with coverage report:
+$ npm run test:cover
+```
+
+Build package:
+
+```sh
+$ npm build
 ```
 
 For more information on WebdriverIO see the [homepage](http://webdriver.io).

@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - '0.11'
+  - '6.10'
 
 script:
   - ./node_modules/.bin/grunt

@@ -7,18 +7,18 @@ describe('dummy test', () => {
         global.mochaExtra.itskip = new Date().getTime() - start
     })
 
-    it.only('should only run this', () => {
+    it.only('should only run this', () => { // eslint-disable-line mocha/no-exclusive-tests
         const start = new Date().getTime()
         browser.pause()
         global.mochaExtra.itonly = new Date().getTime() - start
     })
 
-    it.only('should skip within spec', function () {
+    it.only('should skip within spec', function () { // eslint-disable-line mocha/no-exclusive-tests
         this.skip()
         throw new Error('ignore me')
     })
 
-    it.only('should skip within async spec', function async () {
+    it.only('should skip within async spec', function async () { // eslint-disable-line mocha/no-exclusive-tests
         return browser.command().then(() => {
             this.skip()
             throw new Error('ignore me')

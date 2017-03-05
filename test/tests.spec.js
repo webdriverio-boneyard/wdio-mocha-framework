@@ -8,8 +8,8 @@ const NOOP = () => {}
 
 const WebdriverIO = class {}
 WebdriverIO.prototype = {
-    pause: (ms = 500) => new Promise((r) => setTimeout(() => r(), ms)),
-    command: (ms = 500) => new Promise((r) => setTimeout(() => r('foo'), ms)),
+    pause: (ms = 500) => new Promise((resolve) => setTimeout(() => resolve(), ms)),
+    command: (ms = 500) => new Promise((resolve) => setTimeout(() => resolve('foo'), ms)),
     getPrototype: () => WebdriverIO.prototype
 }
 

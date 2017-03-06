@@ -154,7 +154,7 @@ describe('mocha adapter', () => {
                 let promise = adapter.run().then((failures) => {
                     failures.should.be.exactly(1234)
                 })
-                process.nextTick(() => run.callArgWith(0, 1234))
+                setTimeout(() => run.callArgWith(0, 1234), 100)
                 return promise
             })
 
@@ -166,23 +166,22 @@ describe('mocha adapter', () => {
             })
         })
 
-        it('should wait until all events were sent', () => {
+        it('should wait until all events were sent', (done) => {
             const start = (new Date()).getTime()
-            let promise = adapter.run().then((failures) => {
+            adapter.run().then((failures) => {
                 const end = (new Date()).getTime();
                 (end - start).should.be.greaterThan(500)
                 failures.should.be.exactly(1234)
             })
             adapter.emit('suite:start', {}, {})
             adapter.emit('suite:end', {}, {})
-            process.nextTick(() => run.callArgWith(0, 1234))
 
             setTimeout(() => {
+                run.callArgWith(0, 1234)
                 send.args[0][3]()
                 send.args[1][3]()
+                done()
             }, 500)
-
-            return promise
         })
 
         after(() => {

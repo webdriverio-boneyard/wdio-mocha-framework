@@ -5,7 +5,7 @@ node_js:
   - '6.10'
 
 script:
-  - ./node_modules/.bin/grunt
+  - npm run test:ci
 
 after_success:
   - ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info

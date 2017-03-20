@@ -1,6 +1,8 @@
 WDIO Mocha Framework Adapter
 ============================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/webdriverio/wdio-mocha-framework.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/webdriverio/wdio-mocha-framework.svg?branch=master)](https://travis-ci.org/webdriverio/wdio-mocha-framework) [![Code Climate](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/badges/gpa.svg)](https://codeclimate.com/github/webdriverio/wdio-mocha-framework) [![Test Coverage](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/badges/coverage.svg)](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/coverage) [![Dependency Status](https://www.versioneye.com/user/projects/58bc69bd01b5b7003d620a09/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58bc69bd01b5b7003d620a09)
 
 ***

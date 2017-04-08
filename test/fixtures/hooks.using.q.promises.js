@@ -1,3 +1,5 @@
+import q from 'q'
+
 global.___wdio = {
     onPrepare: {},
     before: {},
@@ -12,8 +14,6 @@ global.___wdio = {
     after: {},
     onComplete: {}
 }
-
-import q from 'q'
 
 export default {
     capabilities: {

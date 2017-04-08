@@ -42,7 +42,7 @@
     "wdio-sync": "0.6.13"
   },
   "devDependencies": {
-    "babel-cli": "~6.24.1",
+    "babel-cli": "6.24.0",
     "babel-core": "~6.24.1",
     "babel-eslint": "~7.1.1",
     "babel-plugin-add-module-exports": "~0.2.1",

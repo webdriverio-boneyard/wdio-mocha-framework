@@ -108,7 +108,7 @@ TEST-XXX
 
 ## `mochaOpts.compilers (string[])`
 
-Use the given module(s) to compile files
+Use the given module(s) to compile files. Compilers will be included before requires.
 
 CoffeeScript and similar transpilers may be used by mapping the file extensions and the module name.
 

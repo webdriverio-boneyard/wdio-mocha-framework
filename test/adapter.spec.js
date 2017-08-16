@@ -104,9 +104,9 @@ describe('mocha adapter', () => {
                     compilers: ['js:moduleB', './lib/moduleC']
                 }, context)
 
-                load.calledWith('/mypath/lib/moduleA', context).should.be.true()
-                load.calledWith('moduleB', context).should.be.true()
-                load.calledWith('/mypath/lib/moduleC', context).should.be.true()
+                load.firstCall.calledWith('moduleB', context).should.be.true()
+                load.secondCall.calledWith('/mypath/lib/moduleC', context).should.be.true()
+                load.thirdCall.calledWith('/mypath/lib/moduleA', context).should.be.true()
             })
         })
 

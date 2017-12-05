@@ -46,7 +46,7 @@ module.exports = {
 
 ## `mochaOpts` Options
 
-Options will be passed to the Mocha instance. See the full list of Mocha options at [http://mochajs.org/](http://mochajs.org/)
+Options will be passed to the Mocha instance. See the list of supported Mocha options [here](https://github.com/mochajs/mocha/wiki/Using-mocha-programmatically#set-options).
 
 ----
 

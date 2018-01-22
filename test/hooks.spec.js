@@ -595,6 +595,60 @@ describe('MochaAdapter executes custom commands', () => {
     })
 })
 
+describe('MochaAdapter executes custom commands with custom interface', () => {
+    before(async () => {
+        global.browser = new WebdriverIO()
+        global.browser.options = {}
+        configCustomCommands.mochaOpts.ui = require.resolve('./utils/custom-interface.js')
+        const adapter = new MochaAdapter(0, configCustomCommands, specs4, configCustomCommands.capabilities);
+        (await adapter.run()).should.be.equal(0, 'actual test failed')
+    })
+
+    after(() => {
+        delete configCustomCommands.mochaOpts.ui
+    })
+
+    it('should defer execution until custom wdio command completes', () => {
+        let duration = global.____wdio.customWdio.end - global.____wdio.customWdio.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom wdio promise command resolves', () => {
+        let duration = global.____wdio.customWdioPromise.end - global.____wdio.customWdioPromise.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom native promise command resolves', () => {
+        let duration = global.____wdio.customNativePromise.end - global.____wdio.customNativePromise.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom q promise command resolves', () => {
+        let duration = global.____wdio.customQPromise.end - global.____wdio.customQPromise.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom command wrapping custom wdio command resolves', () => {
+        let duration = global.____wdio.customWrapWdio.end - global.____wdio.customWrapWdio.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom command wrapping custom wdio promise command resolves', () => {
+        let duration = global.____wdio.customWrapWdioPromise.end - global.____wdio.customWrapWdioPromise.start
+        duration.should.be.greaterThan(990)
+    })
+
+    it('should defer execution until custom command wrapping two native promise commands resolves', () => {
+        let duration = global.____wdio.customWrapTwoPromises.end - global.____wdio.customWrapTwoPromises.start
+        duration.should.be.greaterThan(1990)
+    })
+
+    it('should defer execution until custom command wrapping wdio comamnd treated as promise resolves', () => {
+        let duration = global.____wdio.customHandleWdioAsPromise.end - global.____wdio.customHandleWdioAsPromise.start
+        duration.should.be.greaterThan(1990)
+    })
+})
+
 describe('MochaAdapter executes async hooks', () => {
     before(async () => {
         global.browser = new WebdriverIO()

@@ -3,6 +3,7 @@ bundler_args: --retry 0
 
 node_js:
   - '6.10'
+  - '10'
 
 script:
   - npm run test:ci

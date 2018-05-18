@@ -144,4 +144,22 @@ describe('MochaAdapter', () => {
             global.mochaExtra.itonly.should.be.greaterThan(499)
         })
     })
+
+    describe('MochaAdapter loads custom Mocha interface', () => {
+        before(async () => {
+            global.browser = new WebdriverIO()
+            global.browser.options = {}
+            const adapter = new MochaAdapter(0, {
+                mochaOpts: {
+                    ui: require.resolve('./utils/custom-interface.js')
+                }
+            }, syncSpecs, {});
+            (await adapter.run()).should.be.equal(0, 'actual test failed')
+        })
+
+        it('should have custom ui methods in the global scope', () => {
+            const context = global.testMochaContext()
+            global.before.should.be.equal(context.before)
+        })
+    })
 })

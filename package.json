@@ -38,8 +38,8 @@
   "homepage": "https://github.com/webdriverio/wdio-mocha-framework#readme",
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "mocha": "^5.0.0",
-    "wdio-sync": "0.7.2"
+    "mocha": "^5.2.0",
+    "wdio-sync": "0.7.3"
   },
   "devDependencies": {
     "babel-cli": "~6.26.0",

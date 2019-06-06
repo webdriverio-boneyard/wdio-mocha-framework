@@ -124,6 +124,11 @@ CoffeeScript and similar transpilers may be used by mapping the file extensions 
 
 ## Development
 
+First of all,
+```sh
+npm i
+```
+
 All commands can be found in the package.json. The most important are:
 
 Watch changes:
@@ -144,7 +149,7 @@ $ npm run test:cover
 Build package:
 
 ```sh
-$ npm build
+$ npm run build
 ```
 
 For more information on WebdriverIO see the [homepage](http://webdriver.io).

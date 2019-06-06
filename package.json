@@ -39,7 +39,7 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "mocha": "^5.2.0",
-    "wdio-sync": "5.9.6"
+    "@wdio/sync": "5.8.0"
   },
   "devDependencies": {
     "babel-cli": "~6.26.0",

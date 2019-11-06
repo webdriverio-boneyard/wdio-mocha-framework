@@ -1,20 +1,16 @@
 WDIO Mocha Framework Adapter
 ============================
 
-[![Build Status](https://travis-ci.org/webdriverio/wdio-mocha-framework.svg?branch=master)](https://travis-ci.org/webdriverio/wdio-mocha-framework) [![Code Climate](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/badges/gpa.svg)](https://codeclimate.com/github/webdriverio/wdio-mocha-framework) [![Test Coverage](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/badges/coverage.svg)](https://codeclimate.com/github/webdriverio/wdio-mocha-framework/coverage) [![Dependency Status](https://www.versioneye.com/user/projects/58bc69bd01b5b7003d620a09/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58bc69bd01b5b7003d620a09)
-
-***
-
 > A WebdriverIO plugin. Adapter for Mocha testing framework.
 
 ## Installation
 
-The easiest way is to keep `wdio-mocha-framework` as a devDependency in your `package.json`.
+The easiest way is to keep `@wdio/mocha-framework` as a devDependency in your `package.json`.
 
 ```json
 {
   "devDependencies": {
-    "wdio-mocha-framework": "~0.5.9"
+    "@wdio/mocha-framework": "^5.0.0"
   }
 }
 ```
@@ -22,10 +18,10 @@ The easiest way is to keep `wdio-mocha-framework` as a devDependency in your `pa
 You can simple do it by:
 
 ```bash
-npm install wdio-mocha-framework --save-dev
+npm install @wdio/mocha-framework --save-dev
 ```
 
-Instructions on how to install `WebdriverIO` can be found [here.](http://webdriver.io/guide/getstarted/install.html)
+Instructions on how to install `WebdriverIO` can be found [here.](https://webdriver.io/docs/gettingstarted.html)
 
 ## Configuration
 
@@ -44,11 +40,11 @@ module.exports = {
 };
 ```
 
+Note that interfaces supported are `bdd`, `tdd` and `qunit`. If you want to provide a custom interface, it should expose methods compatible with them and be named ending with `-bdd`, `-tdd` or `-qunit` accordingly.
+
 ## `mochaOpts` Options
 
 Options will be passed to the Mocha instance. See the list of supported Mocha options [here](https://github.com/mochajs/mocha/wiki/Using-mocha-programmatically#set-options).
-
-Note that interfaces supported are `bdd`, `tdd` and `qunit`. If you want to provide a custom interface, it should expose methods compatible with them and be named ending with `-bdd`, `-tdd` or `-qunit` accordingly.
 
 ----
 
@@ -124,11 +120,6 @@ CoffeeScript and similar transpilers may be used by mapping the file extensions 
 
 ## Development
 
-First of all,
-```sh
-npm i
-```
-
 All commands can be found in the package.json. The most important are:
 
 Watch changes:
@@ -149,7 +140,7 @@ $ npm run test:cover
 Build package:
 
 ```sh
-$ npm run build
+$ npm build
 ```
 
-For more information on WebdriverIO see the [homepage](http://webdriver.io).
+For more information on WebdriverIO see the [homepage](https://webdriver.io).
